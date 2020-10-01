@@ -3,13 +3,22 @@ package com.asecave;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class Console {
-	
+
 	private int fgColor;
 	private int bgColor;
-	
+
 	private boolean fullscreen = false;
+
+	static {
+		try {
+			NativeUtils.loadLibraryFromJar("/Console.dll");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public Console() {
 		open();
@@ -17,7 +26,7 @@ public class Console {
 		fgColor = 0;
 		bgColor = 0;
 	}
-	
+
 	public static class Color {
 		public static final int BLACK = 0x0;
 		public static final int RED = 0x1;
@@ -36,23 +45,23 @@ public class Console {
 		public static final int GRAY = 0xE;
 		public static final int WHITE = 0xF;
 	}
-	
+
 	public static class FontSize {
 		public static final int SMALL = 0;
 		public static final int NORMAL = 1;
 		public static final int LARGE = 2;
 	}
-	
+
 	public void setFGColor(int color) {
 		fgColor = color;
 		setColorCode(makeColorCode());
 	}
-	
+
 	public void setBGColor(int color) {
 		bgColor = color;
 		setColorCode(makeColorCode());
 	}
-	
+
 	private int makeColorCode() {
 		int code = bgColor * 16;
 		return code | fgColor;
@@ -61,7 +70,7 @@ public class Console {
 	public void setCursor(int x, int y) {
 		setCursor((short) x, (short) y);
 	}
-	
+
 	public void setFullscreen(boolean fullscreen) {
 		if (this.fullscreen != fullscreen) {
 			this.fullscreen = fullscreen;
@@ -76,7 +85,7 @@ public class Console {
 			}
 		}
 	}
-	
+
 	public boolean isFullscreen() {
 		return fullscreen;
 	}
@@ -86,15 +95,15 @@ public class Console {
 	private native boolean start(int width, int height);
 
 	private native void setCursor(short x, short y);
-	
+
 	public native void fill(char filler);
 
 	public native void fill(char filler, int x1, int y1, int width, int height);
 
 	public native void print(int i);
-	
+
 	public native void print(char c);
-	
+
 	public native void print(String s);
 
 	private native void setColorCode(int color);
@@ -106,8 +115,8 @@ public class Console {
 	public native void setCursorVisible(boolean visible);
 
 	public native void setTitle(String title);
-	
+
 	public native char getInputChar();
-	
+
 	public native void setFontSize(int size);
 }

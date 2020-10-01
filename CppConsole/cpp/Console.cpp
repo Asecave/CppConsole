@@ -38,6 +38,7 @@ boolean start(int Width, int Height) {
 	Handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	if (SetConsoleWindowInfo(Handle, TRUE, &Rect) == 0) {
 		cout << "Error while opening Console: " << GetLastError() << endl;
+		cout << "This error is likely caused by running the program in an IDE. Export into a jar and you should be good." << endl;
 		return false;
 	}
 	SetConsoleScreenBufferSize(Handle, getConsoleSize());
