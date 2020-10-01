@@ -7,8 +7,8 @@
 #include <string>
 #include <stdio.h>
 #include <conio.h>
-#include "header/main_Console.h"
-#include "header/main_Console_FontSize.h"
+#include "header/com_asecave_Console.h"
+#include "header/com_asecave_Console_FontSize.h"
 using namespace std;
 
 HANDLE Handle;
@@ -141,13 +141,13 @@ jchar getInputChar() {
 void setFontSize(int size) {
 	int wh;
 	switch (size) {
-	case main_Console_FontSize_LARGE:
+	case com_asecave_Console_FontSize_LARGE:
 		wh = 32;
 		break;
-	case main_Console_FontSize_SMALL:
+	case com_asecave_Console_FontSize_SMALL:
 		wh = 8;
 		break;
-	case main_Console_FontSize_NORMAL:
+	case com_asecave_Console_FontSize_NORMAL:
 	default:
 		wh = 16;
 		break;
