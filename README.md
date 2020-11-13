@@ -1,4 +1,4 @@
-#This Library allows you to use a terminal window from C++ in Java.
+# This Library allows you to use a terminal window from C++ in Java.
 You can:
 - set the cursor position
 - fill the console with one type of character or only a part (like fillRect)
