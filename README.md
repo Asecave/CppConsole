@@ -14,3 +14,5 @@ This library doesn't contain a lot of code but it is really helpful (and looks n
 I created this on Windows and it also works for Windows. I don't know if it will run on MacOS or Linux.
 
 This console library will be updated when I need something to add or change or when I think something is missing.
+
+[Click here to download the latest jar-file.](https://github.com/Asecave/CppConsole/releases/latest/download/CppConsole.jar)
